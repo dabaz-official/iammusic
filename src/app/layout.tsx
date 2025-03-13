@@ -4,12 +4,12 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Their Side',
+    template: '%s - I AM MUSIC',
     default:
-      'Their Side - Conversations with the most tragically misunderstood people of our time',
+      'I AM MUSIC - Playboi Carti’s forthcoming third studio album',
   },
   description:
-    'Conversations with the most tragically misunderstood people of our time.',
+    'Playboi Carti’s forthcoming third studio album and his first release in nearly four years, following his widely acclaimed December 2020 album, Whole Lotta Red.',
 }
 
 export default function RootLayout({

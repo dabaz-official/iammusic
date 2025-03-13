@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Container } from '@/components/Container'
 import { EpisodePlayButton } from '@/components/EpisodePlayButton'
 import { FormattedDate } from '@/components/FormattedDate'
-import { type Episode, getAllEpisodes } from '@/lib/episodes'
+import { type Episode, episodes } from '@/lib/episodes'
 
 function PauseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -34,50 +34,29 @@ function EpisodeEntry({ episode }: { episode: Episode }) {
       className="py-10 sm:py-12"
     >
       <Container>
-        <div className="flex flex-col items-start">
+        <div className="flex items-center gap-x-2 my-auto">
+          <EpisodePlayButton
+            episode={episode}
+            className="flex items-center gap-x-3 text-sm font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
+            playing={
+              <>
+                <PauseIcon className="h-3 w-3 fill-current" />
+              </>
+            }
+            paused={
+              <>
+                <PlayIcon className="h-3 w-3 fill-current" />
+              </>
+            }
+          />
           <h2
             id={`episode-${episode.id}-title`}
-            className="mt-2 text-lg font-bold text-slate-900"
+            className="text-lg font-bold text-slate-900"
           >
             <Link href={`/${episode.id}`}>{episode.title}</Link>
           </h2>
-          <FormattedDate
-            date={date}
-            className="order-first font-mono text-sm leading-7 text-slate-500"
-          />
-          <p className="mt-1 text-base leading-7 text-slate-700">
-            {episode.description}
-          </p>
           <div className="mt-4 flex items-center gap-4">
-            <EpisodePlayButton
-              episode={episode}
-              className="flex items-center gap-x-3 text-sm font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
-              playing={
-                <>
-                  <PauseIcon className="h-2.5 w-2.5 fill-current" />
-                  <span aria-hidden="true">Listen</span>
-                </>
-              }
-              paused={
-                <>
-                  <PlayIcon className="h-2.5 w-2.5 fill-current" />
-                  <span aria-hidden="true">Listen</span>
-                </>
-              }
-            />
-            <span
-              aria-hidden="true"
-              className="text-sm font-bold text-slate-400"
-            >
-              /
-            </span>
-            <Link
-              href={`/${episode.id}`}
-              className="flex items-center text-sm font-bold leading-6 text-pink-500 hover:text-pink-700 active:text-pink-900"
-              aria-label={`Show notes for episode ${episode.title}`}
-            >
-              Show notes
-            </Link>
+            
           </div>
         </div>
       </Container>
@@ -86,13 +65,11 @@ function EpisodeEntry({ episode }: { episode: Episode }) {
 }
 
 export default async function Home() {
-  let episodes = await getAllEpisodes()
-
   return (
     <div className="pb-12 pt-16 sm:pb-4 lg:pt-12">
       <Container>
         <h1 className="text-2xl font-bold leading-7 text-slate-900">
-          Episodes
+          MUSIC
         </h1>
       </Container>
       <div className="divide-y divide-slate-100 sm:mt-4 lg:mt-8 lg:border-t lg:border-slate-100">

@@ -7,7 +7,7 @@ import { AudioProvider } from '@/components/AudioProvider'
 import { AudioPlayer } from '@/components/player/AudioPlayer'
 import { TinyWaveFormIcon } from '@/components/TinyWaveFormIcon'
 import { Waveform } from '@/components/Waveform'
-import posterImage from '@/images/poster.png'
+import coverImage from '@/images/album-cover.jpg'
 
 function SpotifyIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -62,7 +62,7 @@ export default function MainLayout({
 }: {
   children: React.ReactNode
 }) {
-  let hosts = ['Eric Gordon', 'Wes Mantooth']
+  let hosts = ['DabAZ', 'Playboi Carti']
 
   return (
     <AudioProvider>
@@ -90,7 +90,7 @@ export default function MainLayout({
           >
             <Image
               className="w-full"
-              src={posterImage}
+              src={coverImage}
               alt=""
               sizes="(min-width: 1024px) 20rem, (min-width: 640px) 16rem, 12rem"
               priority
@@ -99,48 +99,13 @@ export default function MainLayout({
           </Link>
           <div className="mt-10 text-center lg:mt-12 lg:text-left">
             <p className="text-xl font-bold text-slate-900">
-              <Link href="/">Their Side</Link>
+              <Link href="/">I AM MUSIC</Link>
             </p>
             <p className="mt-3 text-lg font-medium leading-8 text-slate-700">
-              Conversations with the most tragically misunderstood people of our
-              time.
+              Playboi Carti’s forthcoming third studio album and his first release in nearly four years, following his widely acclaimed December 2020 album, Whole Lotta Red.
             </p>
           </div>
           <AboutSection className="mt-12 hidden lg:block" />
-          <section className="mt-10 lg:mt-12">
-            <h2 className="sr-only flex items-center font-mono text-sm font-medium leading-7 text-slate-900 lg:not-sr-only">
-              <TinyWaveFormIcon
-                colors={['fill-indigo-300', 'fill-blue-300']}
-                className="h-2.5 w-2.5"
-              />
-              <span className="ml-2.5">Listen</span>
-            </h2>
-            <div className="h-px bg-gradient-to-r from-slate-200/0 via-slate-200 to-slate-200/0 lg:hidden" />
-            <ul
-              role="list"
-              className="mt-4 flex justify-center gap-10 text-base font-medium leading-7 text-slate-700 sm:gap-8 lg:flex-col lg:gap-4"
-            >
-              {(
-                [
-                  ['Spotify', SpotifyIcon],
-                  ['Apple Podcast', ApplePodcastIcon],
-                  ['Overcast', OvercastIcon],
-                  ['RSS Feed', RSSIcon],
-                ] as const
-              ).map(([label, Icon]) => (
-                <li key={label} className="flex">
-                  <Link
-                    href="/"
-                    className="group flex items-center"
-                    aria-label={label}
-                  >
-                    <Icon className="h-8 w-8 fill-slate-400 group-hover:fill-slate-600" />
-                    <span className="hidden sm:ml-3 sm:block">{label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
         </div>
       </header>
       <main className="border-t border-slate-200 lg:relative lg:mb-28 lg:ml-112 lg:border-t-0 xl:ml-120">
